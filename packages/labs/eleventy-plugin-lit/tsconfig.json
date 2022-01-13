@@ -12,6 +12,7 @@
     "inlineSources": true,
     "outDir": "./",
     "rootDir": "./src",
+    "tsBuildInfoFile": ".tsbuildinfo",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
