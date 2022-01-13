@@ -28,8 +28,9 @@
     "build": "npm run clean && npm run build:ts",
     "build:ts": "tsc --build && treemirror development . '**/*.d.ts{,.map}'",
     "build:ts:watch": "tsc --build --watch",
-    "build:demo": "cd demo && eleventy",
+    "build:demo": "npm run build:demo:bundle && npm run build:demo:site",
     "build:demo:bundle": "cd demo && rollup -c",
+    "build:demo:site": "cd demo && eleventy",
     "build:demo:watch": "cd demo && eleventy --watch",
     "clean": "rm -rf {index}.{js,js.map,d.ts} test/ demo/_site demo/_js/*.bundle.js *.tsbuildinfo",
     "serve:demo": "wds --watch --node-resolve --open demo/_site/test"
