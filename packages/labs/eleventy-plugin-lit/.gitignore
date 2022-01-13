@@ -3,3 +3,8 @@
 /demo/_site/
 /demo/_js/*.bundle.js
 /index.*
+
+/test/
+# We need Node to run uvu tests as ES modules, even though the main package is
+# commonjs. This package.json lets us switch to ES modules just for tests.
+!/test/package.json
