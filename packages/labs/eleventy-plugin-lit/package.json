@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "@lit-labs/ssr": "1.0.0-pre.1",
-    "eleventy": "^1.0.6",
     "lit": "^2.0.0-pre.2"
   },
   "devDependencies": {
