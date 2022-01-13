@@ -1,10 +1,18 @@
 {
   "name": "@lit-labs/eleventy-plugin-lit",
   "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Eleventy plugin for rendering Lit components.",
   "license": "BSD-3-Clause",
-  "homepage": "https://lit-element.polymer-project.org/",
-  "repository": "lit-html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lit/lit.git",
+    "directory": "packages/labs/eleventy-plugin-lit"
+  },
+  "author": "Google LLC",
+  "homepage": "https://lit.dev/",
   "main": "index.js",
   "typings": "index.d.ts",
   "exports": {
@@ -27,7 +35,11 @@
     "regen-package-lock": "rm -rf node_modules package-lock.json; npm install",
     "serve:demo": "wds --watch --node-resolve --open demo/_site/test"
   },
-  "author": "Google LLC",
+  "dependencies": {
+    "@lit-labs/ssr": "1.0.0-pre.1",
+    "eleventy": "^1.0.6",
+    "lit": "^2.0.0-pre.2"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@rollup/plugin-node-resolve": "^11.2.1",
@@ -36,13 +48,5 @@
     "rollup": "^2.45.2",
     "typescript": "^4.1.3",
     "internal-scripts": "^1.0.0"
-  },
-  "dependencies": {
-    "@lit-labs/ssr": "1.0.0-pre.1",
-    "eleventy": "^1.0.6",
-    "lit": "^2.0.0-pre.2"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
