@@ -1,6 +1,6 @@
 # @lit-labs/eleventy-plugin-lit
 
-A plugin for [Eleventy](www.11ty.dev) for pre-rendering pages that include Lit web components. The components can then be (optionally) hydrated on the client for interactivity.
+A plugin for [Eleventy](https://www.11ty.dev) for pre-rendering pages that include Lit web components. The components can then be (optionally) hydrated on the client for interactivity.
 
 ## Usage
 
