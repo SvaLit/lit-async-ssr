@@ -33,7 +33,6 @@
     "build:demo:watch": "cd demo && eleventy --watch",
     "clean": "rm -rf {index}.{js,js.map,d.ts} test/ demo/_site demo/_js/*.bundle.js *.tsbuildinfo",
     "dev": "scripts/dev.sh",
-    "regen-package-lock": "rm -rf node_modules package-lock.json; npm install",
     "serve:demo": "wds --watch --node-resolve --open demo/_site/test"
   },
   "dependencies": {
