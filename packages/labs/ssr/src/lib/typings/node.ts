@@ -4,11 +4,15 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+export {};
+
 declare global {
   interface ImportMeta {
     url: string;
   }
 }
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 declare module 'vm' {
   class Module {
@@ -38,6 +42,6 @@ declare module 'vm' {
       evaluateCallback: (this: SyntheticModule) => void,
       options: any
     );
-    setExport(name: string, value: any);
+    setExport(name: string, value: any): any;
   }
 }

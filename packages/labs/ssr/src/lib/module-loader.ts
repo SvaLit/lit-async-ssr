@@ -11,6 +11,8 @@ import * as vm from 'vm';
 import resolveAsync from 'resolve';
 import {builtinModules} from 'module';
 
+import './typings/node.js';
+
 type PackageJSON = {main?: string; module?: string; 'jsnext:main'?: string};
 
 const builtIns = new Set(builtinModules);
