@@ -28,33 +28,65 @@ module.exports = {
     eleventyConfig: any,
     options: LitPluginOptions = {}
   ) {
+    for (const module of options.componentModules ?? []) {
+      eleventyConfig.addWatchTarget(module);
+    }
     eleventyConfig.addTransform(
       'render-lit',
       async (content: string, outputPath: string) => {
-        console.log(this);
-        if (outputPath.endsWith('.html')) {
-          const renderSync = (
-            await import('@lit-labs/ssr/lib/render-with-global-dom-shim.js')
-          ).renderSync;
-          const html = (await import('lit')).html;
-          const unsafeHTML = (await import('lit/directives/unsafe-html.js'))
-            .unsafeHTML;
-          for (const module of options.componentModules ?? []) {
-            require(path.join(process.cwd(), module));
-          }
-          let head, body, tail;
-          const page = content.match(/(.*)(<body.*<\/body>)(.*)/);
-          if (page) {
-            [head, body, tail] = page;
-          } else {
-            head = `<html><head></head>`;
-            body = `<body>${content}</body>`;
-            tail = `</html>`;
-          }
-          return head + renderSync(html`${unsafeHTML(body)}`) + tail;
+        if (!outputPath.endsWith('.html')) {
+          return content;
         }
-        return content;
+
+        let head, body, tail;
+        const page = content.match(/(.*)(<body.*<\/body>)(.*)/);
+        if (page) {
+          [head, body, tail] = page;
+        } else {
+          head = `<html><head></head>`;
+          body = `<body>${content}</body>`;
+          tail = `</html>`;
+        }
+
+        const {getWindow} = await import('@lit-labs/ssr/lib/dom-shim.js');
+        const window = getWindow({includeJSBuiltIns: true});
+        const {ModuleLoader} = await import(
+          '@lit-labs/ssr/lib/module-loader.js'
+        );
+        const loader = new ModuleLoader({global: window});
+        // TODO(aomarks) Is process.cwd() correct here? Can Eleventy be invoked
+        // from one cwd but pointed to an eleventy config file in another
+        // directory?
+        const referrer = path.join(process.cwd(), 'fake-referrer.js');
+        await Promise.all(
+          (options.componentModules ?? []).map((module) =>
+            loader.importModule(module, referrer)
+          )
+        );
+
+        const script = `
+          import {render} from '@lit-labs/ssr/lib/render-lit-html.js';
+          import {html} from 'lit';
+          export const result = render(html\`${escapeStringToEmbedInTemplateLiteral(
+            body
+          )}\`);
+        `;
+        const module = await loader.loadScript(script, referrer);
+        const result = module.namespace['result'];
+        let rendered = '';
+        for (const fragment of result) {
+          rendered += fragment;
+        }
+
+        return head + rendered + tail;
       }
     );
   },
 };
+
+/**
+ * Escape an HTML text content string such that it can be safely embedded in a
+ * JavaScript template literal (backtick string).
+ */
+const escapeStringToEmbedInTemplateLiteral = (unescaped: string): string =>
+  unescaped.replace(/\\/g, `\\\\`).replace(/`/g, '\\`').replace(/\$/g, '\\$');
