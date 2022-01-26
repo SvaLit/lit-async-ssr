@@ -98,6 +98,22 @@ export class ModuleLoader {
     return result;
   }
 
+  async loadScript(script: string, url: string): Promise<vm.Module> {
+    const module = new vm.SourceTextModule(script, {
+      initializeImportMeta,
+      importModuleDynamically: this._importModuleDynamically,
+      context: this._context,
+      identifier: this._getIdentifier(url),
+    });
+    if (module.status === 'unlinked') {
+      await module.link(this._linker);
+    }
+    if (module.status !== 'evaluated') {
+      await module.evaluate();
+    }
+    return module;
+  }
+
   /**
    * Performs the actual loading of module source from disk, creates the
    * Module instance, and maintains the module cache.
