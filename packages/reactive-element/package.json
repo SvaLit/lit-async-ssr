@@ -1,5 +1,5 @@
 {
-  "name": "@lit/reactive-element",
+  "name": "@svalit/reactive-element",
   "version": "1.0.0-rc.2",
   "publishConfig": {
     "access": "public"

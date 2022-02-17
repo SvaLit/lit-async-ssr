@@ -1,7 +1,10 @@
 {
-  "name": "lit-html",
+  "name": "@svalit/lit-html",
   "version": "2.0.0-rc.3",
   "description": "HTML templates literals in JavaScript",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",

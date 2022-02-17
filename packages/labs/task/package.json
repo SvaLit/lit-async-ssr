@@ -1,5 +1,5 @@
 {
-  "name": "@lit-labs/task",
+  "name": "@svalit/task",
   "version": "1.0.0-rc.2",
   "description": "A controller for Lit that renders asynchronous tasks.",
   "license": "BSD-3-Clause",
@@ -60,7 +60,7 @@
     "internal-scripts": "^1.0.0"
   },
   "dependencies": {
-    "@lit/reactive-element": "^1.0.0-rc.2"
+    "@lit/reactive-element": "npm:@svalit/reactive-element@^1.0.0-rc.2"
   },
   "publishConfig": {
     "access": "public"
