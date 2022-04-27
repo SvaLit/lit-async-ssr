@@ -1,5 +1,6 @@
 <div align="center">
-<img src="./packages/lit/logo.svg" alt="Lit" width="300" height="141">
+<a href="https://lit.dev/#gh-light-mode-only"><img src="./packages/lit/logo.svg" alt="Lit" width="300" height="141"></a>
+<a href="https://lit.dev/#gh-dark-mode-only"><img src="./packages/lit/logo.white.svg" alt="Lit" width="300" height="141"></a>
 
 ### Simple. Fast. Web Components.
 
