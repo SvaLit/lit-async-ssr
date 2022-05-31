@@ -42,9 +42,9 @@
       "development": "./development/decorators.js",
       "default": "./decorators.js"
     },
-    "./decorators/": {
-      "development": "./development/decorators/",
-      "default": "./decorators/"
+    "./decorators/*": {
+      "development": "./development/decorators/*",
+      "default": "./decorators/*"
     }
   },
   "scripts": {

@@ -21,9 +21,9 @@
       "development": "./development/index.js",
       "default": "./index.js"
     },
-    "./directives/": {
-      "development": "./development/directives/",
-      "default": "./directives/"
+    "./directives/*": {
+      "development": "./development/directives/*",
+      "default": "./directives/*"
     }
   },
   "files": [
