@@ -22,8 +22,8 @@
     "./decorators.js": {
       "default": "./decorators.js"
     },
-    "./decorators/": {
-      "default": "./decorators/"
+    "./decorators/*": {
+      "default": "./decorators/*"
     },
     "./directive-helpers.js": {
       "default": "./directive-helpers.js"
@@ -31,8 +31,8 @@
     "./directive.js": {
       "default": "./directive.js"
     },
-    "./directives/": {
-      "default": "./directives/"
+    "./directives/*": {
+      "default": "./directives/*"
     },
     "./async-directive.js": {
       "default": "./async-directive.js"

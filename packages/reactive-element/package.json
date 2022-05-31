@@ -33,9 +33,9 @@
       "development": "./development/reactive-controller.js",
       "default": "./reactive-controller.js"
     },
-    "./decorators/": {
-      "development": "./development/decorators/",
-      "default": "./decorators/"
+    "./decorators/*": {
+      "development": "./development/decorators/*",
+      "default": "./decorators/*"
     },
     "./decorators.js": {
       "development": "./development/decorators.js",

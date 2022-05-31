@@ -36,9 +36,9 @@
       "development": "./development/polyfill-support.js",
       "default": "./polyfill-support.js"
     },
-    "./directives/": {
-      "development": "./development/directives/",
-      "default": "./directives/"
+    "./directives/*": {
+      "development": "./development/directives/*",
+      "default": "./directives/*"
     },
     "./experimental-hydrate.js": {
       "development": "./development/experimental-hydrate.js",
